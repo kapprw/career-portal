@@ -22,7 +22,7 @@ export class SettingsService {
   public static settings: ISettings;
   public static isServer: boolean;
   public static isIos: boolean;
-  public static urlRoot: string;
+  public static urlRoot: string = '';
   public static loaded: boolean = false;
 
   constructor(
@@ -181,8 +181,6 @@ export class SettingsService {
         language = "fr-FR";
       }
     }
-
-    return 'fr-FR';
 
     return language;
   }

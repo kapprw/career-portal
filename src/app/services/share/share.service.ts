@@ -18,7 +18,7 @@ export class ShareService {
   get config(): any {
     return {
       url: {
-        facebook: 'https://www.facebook.com/dialog/share',
+        facebook: 'https://www.facebook.com/sharer.php',
         twitter: 'https://twitter.com/intent/tweet',
         linkedin: 'https://www.linkedin.com/shareArticle',
       },

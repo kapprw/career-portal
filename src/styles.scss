@@ -1,5 +1,202 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~novo-elements/novo-elements";
+// --------------------------------------------------
+// Global
+// --------------------------------------------------
+@import './styles/global/reset';
+@import './styles/global/functions';
+@import './styles/global/variables';
+
+
+$positive : #2fc900;
+$positive : #2fc900;
+
+$app-colors: (
+  'positive': $positive,
+  'success': $grass,
+  'negative': $grapefruit,
+  'warning': $sunflower,
+  'background': $off-white,
+  'black': $black,
+  'white': $white,
+  'grey': $grey,
+  'off-white': $off-white,
+  'dark': $dark,
+  'light': $light,
+  'pulse': $pulse,
+  'neutral': $neutral,
+  'empty': $empty,
+  'sand': $sand,
+  'silver': $silver,
+  'stone': $stone,
+  'ash': $ash,
+  'slate': $slate,
+  'charcoal': $charcoal,
+);
+
+$dark-colors: ('company': $company,
+  'candidate': $candidate,
+  'navigation': $navigation,
+  'lead': $lead,
+  'contact': $contact,
+  'opportunity': $opportunity,
+  'job': $job,
+  'jobCode': $jobCode,
+  'earnCode': $earnCode,
+  'sendout': $sendout,
+  'placement': $placement,
+  'task': $neutral,
+  'distributionList': $neutral,
+  'credential': $neutral,
+  'user': $neutral,
+  'corporateuser': $neutral,
+  'aqua': $aqua,
+  'ocean': $ocean,
+  'mint': $mint,
+  'grass': $grass,
+  'sunflower': $sunflower,
+  'bittersweet': $bittersweet,
+  'grapefruit': $grapefruit,
+  'carnation': $carnation,
+  'lavender': $lavender,
+  'positive': $positive,
+  'success': $grass,
+  'negative': $grapefruit,
+  'warning': $sunflower,
+  'black': $black,
+  'dark': $dark,
+  'pulse': $pulse,
+  'neutral': $neutral,
+  'navy': $navy,
+  'contract': $contract,
+  'mountain': $mountain,
+  'billableCharge': $billableCharge,
+  'payableCharge': $payableCharge,
+  'invoiceStatement': $invoiceStatement,
+  'submission': $submission,
+  'note': $note,
+  'ash': $ash,
+  'slate': $slate,
+  'charcoal': $charcoal,
+  'jobShift': $jobShift,
+);
+// Light map
+$light-colors: ('background': $off-white,
+  'background-dark': $background-dark,
+  'white': $white,
+  'grey': $grey,
+  'off-white': $off-white,
+  'light': $light,
+  'empty': $empty,
+  'sand': $sand,
+  'silver': $silver,
+  'stone': $stone,
+);
+// All colors
+$all-colors: map-merge($dark-colors, $light-colors);
+
+@import './styles/global/include-media';
+@import './styles/global/flex-grid';
+@import './styles/global/layout';
+@import './styles/global/cdk';
+@include cdk-overlay();
+
+// --------------------------------------------------
+// Plugins (Third-Party-Libraries)
+// --------------------------------------------------
+// --------------------------------------------------
+// Content
+// --------------------------------------------------
+@import './styles/content/typography';
+// --------------------------------------------------
+// Elements
+// --------------------------------------------------
+@import './elements/data-table/data-table.component';
+@import './elements/tabs/Tabs';
+@import './elements/radio/Radio';
+@import './elements/button/Button';
+@import './elements/toast/Toast';
+@import './elements/modal/Modal';
+@import './elements/card/Card';
+@import './elements/calendar/month/CalendarMonthView';
+@import './elements/calendar/week/CalendarWeekView';
+@import './elements/calendar/day/CalendarDayView';
+@import './elements/calendar/common/CalendarDateChange';
+@import './elements/loading/Loading';
+@import './elements/loading/NovoSpinner';
+@import './elements/select/Select';
+@import './elements/picker/Picker';
+@import './elements/picker/extras/grouped-multi-picker-results/GroupedMultiPickerResults';
+@import './elements/picker/extras/mixed-multi-picker-results/MixedMultiPickerResults';
+@import './elements/picker/extras/skills-picker-results/SkillsSpecialtyPickerResults';
+@import './elements/chips/Chips';
+@import './elements/dropdown/Dropdown';
+@import './elements/switch/Switch';
+@import './elements/date-picker/DatePicker';
+@import './elements/time-picker/TimePicker';
+@import './elements/date-time-picker/DateTimePicker';
+@import './elements/header/Header';
+@import './elements/list/List';
+@import './elements/table/Table';
+@import './elements/table/extras/pagination/Pagination';
+@import './elements/form/Form';
+@import './elements/quick-note/QuickNote';
+@import './elements/tiles/Tiles';
+@import './elements/tooltip/Tooltip';
+@import './elements/slider/Slider';
+@import './elements/tip-well/TipWell';
+@import './elements/ckeditor/CKEditor';
+@import './elements/category-dropdown/CategoryDropdown';
+@import './elements/multi-picker/MultiPicker';
+@import './elements/popover/PopOver';
+@import './elements/table/extras/dropdown-cell/DropdownCell';
+@import './elements/search/SearchBox';
+@import './elements/places/places.component';
+@import './elements/value/Values';
+@import './elements/icon/Icon';
+// @import './elements/expansion/expansion-panel';
+// @import './elements/expansion/expansion-panel-header';
+@import './elements/stepper/stepper.component';
+@import './elements/stepper/step-header.component';
+@import './elements/simple-table/table';
+@import './elements/tabbed-group-picker/TabbedGroupPicker';
+
+@each $basic, $color in $dark-colors {
+  .bgc-#{$basic} {
+    background: $color;
+    color: $white;
+  }
+}
+
+@each $basic, $color in $light-colors {
+  .bgc-#{$basic} {
+    background: $color;
+    color: $dark;
+  }
+}
+
+@each $basic, $color in $all-colors {
+  .tc-#{$basic} {
+    color: $color;
+  }
+}
+
+.skeleton:empty {
+  width: 100px;
+  margin: 0.2em 0px;
+  height: 1em;
+  display: inline-flex;
+  background: rgba($dark, 0.1);
+  background-image: linear-gradient(to right, rgba($grey, 0.2) 0%, rgba($grey, 0.3) 50%, rgba($grey, 0.2) 100%);
+  background-repeat: repeat-y;
+  background-size: 25% 100%;
+  background-position: 0 0;
+  animation: shine 1s infinite;
+  @keyframes shine {
+    to {
+      background-position: 100% 0;
+    }
+  }
+}
 
 app-job-list {
   novo-loading {

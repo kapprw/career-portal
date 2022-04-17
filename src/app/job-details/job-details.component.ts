@@ -121,11 +121,11 @@ export class JobDetailsComponent implements OnInit {
     if (res.data && res.data.length > 0) {
       this.job = res.data[0];
       this.titleService.setTitle(this.job.title);
-      this.meta.updateTag({ name: 'og:title', content: this.job.title });
-      this.meta.updateTag({ name: 'titter:title', content: this.job.title });
+      this.meta.updateTag({ name: 'og:title', content: this.getLocale() === 'fr-FR' ?  this.job.customText10 : this.job.title });
+      this.meta.updateTag({ name: 'titter:title', content: this.getLocale() === 'fr-FR' ?  this.job.customText10 : this.job.title });
       this.meta.updateTag({ name: 'og:image', content: SettingsService.settings.companyLogoPath });
       this.meta.updateTag({ name: 'og:url', content: `${SettingsService.urlRoot}${this.router.url}` });
-      this.meta.updateTag({ name: 'og:description', content: this.job.publicDescription});
+      this.meta.updateTag({ name: 'og:description', content: this.getLocale() === 'fr-FR' ?  this.job.publicDescription:  this.job.description });
       this.meta.updateTag({ name: 'twitter:description', content: this.job.publicDescription});
       this.meta.updateTag({ name: 'description', content: this.job.publicDescription});
       this.loading = false;

@@ -119,7 +119,7 @@
   },
   "privacyConsent": {
     "consentCheckbox": true,
-    "sidebarLink": true,
+    "sidebarLink": false,
     "privacyPolicyUrl": "/privacy"
   }
 }
