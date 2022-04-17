@@ -43,6 +43,8 @@ export class JobListComponent implements OnChanges {
     this.http.getjobs(this.filter, { start: this.start }).subscribe(this.onSuccess.bind(this), this.onFailure.bind(this));
   }
 
+  public getLocale = () => SettingsService.settings.defaultLocale;
+
   public loadMore(): void {
     this.getData(true);
   }

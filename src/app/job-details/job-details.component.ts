@@ -114,6 +114,8 @@ export class JobDetailsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  public getLocale = () => SettingsService.settings.defaultLocale;
+
   private setJob(): void {
     let res: any = this.route.snapshot.data.message;
     if (res.data && res.data.length > 0) {

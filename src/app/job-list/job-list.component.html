@@ -11,7 +11,7 @@
 <div *ngFor="let job of jobs" class="job-card" [routerLink]="'jobs/' + job.id" (click)="loadJob(job.id)">
     <novo-list-item>
         <item-header>
-            <item-title><a [href]="'jobs/' + job.id" [routerLink]="'jobs/' + job.id">{{ job.title }}</a></item-title>
+            <item-title><a [href]="'jobs/' + job.id" [routerLink]="'jobs/' + job.id">{{ getLocale() == 'fr-FR' ? job.customText10 : job.title }}</a></item-title>
         </item-header>
         <item-header-end>
             <app-info-chips [job]="job"></app-info-chips>

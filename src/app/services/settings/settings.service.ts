@@ -114,6 +114,8 @@ export class SettingsService {
     ) {
       SettingsService.settings.service.keywordSearchFields = [
         'publicDescription',
+        'description',
+        'customText10',
         'title',
       ];
     }
@@ -134,6 +136,8 @@ export class SettingsService {
       SettingsService.isIos =
         !!navigator.userAgent && /iPad|iPhone|iPod/.test(navigator.userAgent);
     }
+
+    SettingsService.settings.defaultLocale = this.getParentDocumentLanguage();
   }
 
   private getPreferredLanguage(): string {
@@ -159,6 +163,28 @@ export class SettingsService {
         language = SettingsService.settings.defaultLocale;
       }
     }
+
+    // Override language with parent doc's language
+    language = this.getParentDocumentLanguage();
     return language;
   }
+
+  public static getDefaultLocale () : string {
+    return this.settings.defaultLocale;
+  }
+
+  private getParentDocumentLanguage(): string {
+    let language = SettingsService.settings.defaultLocale;
+    if (window.parent !== null) {
+      const tg = window.parent.document.getElementsByTagName("html");
+      if (tg[0].getAttribute("lang") === "fr-CA") {
+        language = "fr-FR";
+      }
+    }
+
+    return 'fr-FR';
+
+    return language;
+  }
+
 }
